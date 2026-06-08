@@ -1,0 +1,47 @@
+<SplashScreen>
+    MDBoxLayout:
+        orientation: 'vertical'
+        md_bg_color: app.theme_cls.primary_color
+        
+        Widget:
+        
+        MDBoxLayout:
+            orientation: 'vertical'
+            size_hint: None, None
+            size: dp(300), dp(300)
+            pos_hint: {'center_x': 0.5}
+            
+            MDLabel:
+                text: "🇵🇰"
+                font_size: dp(80)
+                halign: 'center'
+                theme_text_color: 'Custom'
+                text_color: 1, 1, 1, 1
+            
+            MDRaisedButton:
+                text: "StorageShare"
+                size_hint: None, None
+                size: dp(280), dp(60)
+                pos_hint: {'center_x': 0.5}
+                md_bg_color: 1, 1, 1, 0.2
+                text_color: 1, 1, 1, 1
+                font_size: dp(28)
+                disabled: True
+            
+            MDLabel:
+                text: "Love Pakistan"
+                font_size: dp(24)
+                halign: 'center'
+                theme_text_color: 'Custom'
+                text_color: 1, 1, 1, 0.9
+                italic: True
+        
+        MDLabel:
+            text: "v1.0.0"
+            font_size: dp(14)
+            halign: 'center'
+            theme_text_color: 'Custom'
+            text_color: 1, 1, 1, 0.6
+            pos_hint: {'center_x': 0.5}
+            size_hint_y: None
+            height: dp(40)

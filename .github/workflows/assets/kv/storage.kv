@@ -1,0 +1,100 @@
+<StorageScreen>
+    MDBoxLayout:
+        orientation: 'vertical'
+        
+        MDTopAppBar:
+            id: toolbar
+            title: "Remote Storage"
+            elevation: 4
+            left_action_items: [['arrow-left', lambda x: app.go_home()]]
+            right_action_items: [['folder-plus', lambda x: app.show_create_folder_dialog()], ['upload', lambda x: app.upload_file()]]
+        
+        MDBoxLayout:
+            orientation: 'vertical'
+            padding: dp(8)
+            
+            MDBoxLayout:
+                orientation: 'horizontal'
+                size_hint_y: None
+                height: dp(48)
+                spacing: dp(8)
+                
+                MDIconButton:
+                    icon: 'chevron-left'
+                    on_release: app.go_up_directory()
+                
+                MDLabel:
+                    id: path_label
+                    text: "/"
+                    valign: 'center'
+                
+                Widget:
+                
+                MDLabel:
+                    id: quota_label
+                    text: "50% used"
+                    theme_text_color: 'Secondary'
+                    size_hint_x: None
+                    width: dp(100)
+                    valign: 'center'
+            
+            MDProgressBar:
+                id: quota_bar
+                value: 50
+                max: 100
+                size_hint_y: None
+                height: dp(4)
+            
+            RecycleView:
+                id: file_list
+                viewclass: 'FileItem'
+                RecycleBoxLayout:
+                    default_size: None, dp(60)
+                    default_size_hint: 1, None
+                    size_hint_y: None
+                    height: self.minimum_height
+                    orientation: 'vertical'
+                    spacing: dp(2)
+                    padding: dp(4)
+
+<FileItem>
+    MDCard:
+        orientation: 'horizontal'
+        padding: dp(8)
+        spacing: dp(8)
+        size_hint_y: None
+        height: dp(60)
+        ripple_behavior: True
+        on_release: app.on_file_click(root.file_path, root.is_dir)
+        
+        MDIcon:
+            icon: 'folder' if root.is_dir else 'file'
+            size_hint_x: None
+            width: dp(36)
+            theme_text_color: 'Custom'
+            text_color: app.theme_cls.primary_color if root.is_dir else 0.6, 0.6, 0.6, 1
+        
+        MDBoxLayout:
+            orientation: 'vertical'
+            spacing: dp(2)
+            
+            MDLabel:
+                text: root.file_name
+                font_style: 'Subtitle1'
+                size_hint_y: None
+                height: dp(24)
+            
+            MDLabel:
+                text: root.file_size
+                theme_text_color: 'Secondary'
+                font_size: dp(12)
+                size_hint_y: None
+                height: dp(18)
+        
+        MDIconButton:
+            icon: 'download'
+            size_hint_x: None
+            width: dp(36)
+            on_release: app.download_file(root.file_path)
+            opacity: 0 if root.is_dir else 1
+            disabled: root.is_dir

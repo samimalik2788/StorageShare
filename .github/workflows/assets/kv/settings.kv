@@ -1,0 +1,98 @@
+<SettingsScreen>
+    MDBoxLayout:
+        orientation: 'vertical'
+        
+        MDTopAppBar:
+            title: "Settings"
+            elevation: 4
+            left_action_items: [['arrow-left', lambda x: app.go_home()]]
+        
+        ScrollView:
+            MDList:
+                
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: dp(80)
+                    padding: dp(16)
+                    
+                    MDLabel:
+                        text: "Device Info"
+                        font_style: 'H6'
+                    
+                    MDLabel:
+                        id: device_name_label
+                        text: "Device Name"
+                        theme_text_color: 'Secondary'
+                
+                MDCard:
+                    orientation: 'vertical'
+                    padding: dp(16)
+                    size_hint_y: None
+                    height: dp(200)
+                    margin: dp(8)
+                    
+                    MDLabel:
+                        text: "Paired Devices"
+                        font_style: 'H6'
+                    
+                    MDLabel:
+                        id: paired_count
+                        text: "0 devices paired"
+                        theme_text_color: 'Secondary'
+                    
+                    Widget:
+                    
+                    MDRaisedButton:
+                        text: "Manage Paired Devices"
+                        on_release: app.show_paired_devices()
+                
+                MDCard:
+                    orientation: 'vertical'
+                    padding: dp(16)
+                    size_hint_y: None
+                    height: dp(160)
+                    margin: dp(8)
+                    
+                    MDLabel:
+                        text: "Internet Relay"
+                        font_style: 'H6'
+                    
+                    MDBoxLayout:
+                        orientation: 'horizontal'
+                        size_hint_y: None
+                        height: dp(60)
+                        
+                        MDTextField:
+                            id: relay_host_input
+                            hint_text: "Relay Server Address"
+                            text: "relay.storageshare.com"
+                            size_hint_x: 0.7
+                        
+                        MDRaisedButton:
+                            text: "Connect"
+                            size_hint_x: 0.3
+                            on_release: app.connect_relay()
+                
+                MDCard:
+                    orientation: 'vertical'
+                    padding: dp(16)
+                    size_hint_y: None
+                    height: dp(100)
+                    margin: dp(8)
+                    
+                    MDLabel:
+                        text: "About"
+                        font_style: 'H6'
+                    
+                    MDLabel:
+                        text: "StorageShare v1.0.0"
+                        theme_text_color: 'Secondary'
+                    
+                    MDLabel:
+                        text: "Share storage between devices securely"
+                        theme_text_color: 'Secondary'
+                
+                Widget:
+                    size_hint_y: None
+                    height: dp(20)

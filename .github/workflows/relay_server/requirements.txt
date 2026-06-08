@@ -1,0 +1,3 @@
+# Relay server dependencies (for internet mode)
+flask>=2.3.0
+gunicorn>=21.2.0

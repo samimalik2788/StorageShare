@@ -1,0 +1,176 @@
+<PairingScreen>
+    MDBoxLayout:
+        orientation: 'vertical'
+        
+        MDTopAppBar:
+            title: "Pairing"
+            elevation: 4
+            left_action_items: [['arrow-left', lambda x: app.go_home()]]
+        
+        MDBoxLayout:
+            orientation: 'vertical'
+            padding: dp(24)
+            spacing: dp(20)
+            pos_hint: {'center_y': 0.5}
+            
+            MDLabel:
+                id: title_label
+                text: "Pairing with Device"
+                font_style: 'H5'
+                halign: 'center'
+            
+            MDCard:
+                id: code_display_card
+                orientation: 'vertical'
+                padding: dp(24)
+                size_hint: None, None
+                size: dp(300), dp(180)
+                pos_hint: {'center_x': 0.5}
+                elevation: 4
+                
+                MDLabel:
+                    id: pairing_info
+                    text: "Your 4-digit pairing code:"
+                    halign: 'center'
+                    theme_text_color: 'Secondary'
+                    size_hint_y: None
+                    height: dp(30)
+                
+                MDBoxLayout:
+                    id: code_display
+                    orientation: 'horizontal'
+                    size_hint_x: None
+                    width: dp(240)
+                    size_hint_y: None
+                    height: dp(80)
+                    pos_hint: {'center_x': 0.5}
+                    spacing: dp(12)
+                    
+                    MDTextField:
+                        id: digit1
+                        hint_text: "0"
+                        max_text_length: 1
+                        input_filter: "int"
+                        size_hint_x: None
+                        width: dp(50)
+                        font_size: dp(28)
+                        halign: 'center'
+                        mode: "fill"
+                    
+                    MDTextField:
+                        id: digit2
+                        hint_text: "0"
+                        max_text_length: 1
+                        input_filter: "int"
+                        size_hint_x: None
+                        width: dp(50)
+                        font_size: dp(28)
+                        halign: 'center'
+                        mode: "fill"
+                    
+                    MDTextField:
+                        id: digit3
+                        hint_text: "0"
+                        max_text_length: 1
+                        input_filter: "int"
+                        size_hint_x: None
+                        width: dp(50)
+                        font_size: dp(28)
+                        halign: 'center'
+                        mode: "fill"
+                    
+                    MDTextField:
+                        id: digit4
+                        hint_text: "0"
+                        max_text_length: 1
+                        input_filter: "int"
+                        size_hint_x: None
+                        width: dp(50)
+                        font_size: dp(28)
+                        halign: 'center'
+                        mode: "fill"
+                
+                MDLabel:
+                    id: timer_label
+                    text: "Time remaining: 120s"
+                    halign: 'center'
+                    theme_text_color: 'Error'
+                    size_hint_y: None
+                    height: dp(30)
+            
+            MDCard:
+                id: quota_card
+                orientation: 'vertical'
+                padding: dp(16)
+                size_hint: None, None
+                size: dp(300), dp(160)
+                pos_hint: {'center_x': 0.5}
+                elevation: 4
+                
+                MDLabel:
+                    text: "Set Storage Quota"
+                    halign: 'center'
+                    font_style: 'H6'
+                
+                MDBoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: dp(60)
+                    spacing: dp(8)
+                    pos_hint: {'center_x': 0.5}
+                    
+                    MDTextField:
+                        id: quota_input
+                        hint_text: "Storage Limit"
+                        input_filter: "int"
+                        size_hint_x: None
+                        width: dp(120)
+                        text: "1024"
+                    
+                    MDLabel:
+                        text: "MB"
+                        size_hint_x: None
+                        width: dp(40)
+                        halign: 'left'
+                        valign: 'center'
+                
+                MDBoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: dp(40)
+                    spacing: dp(8)
+                    pos_hint: {'center_x': 0.5}
+                    
+                    MDFlatButton:
+                        text: "500 MB"
+                        size_hint_x: None
+                        width: dp(80)
+                        on_release: app.set_quota_preset("500")
+                    
+                    MDFlatButton:
+                        text: "1 GB"
+                        size_hint_x: None
+                        width: dp(80)
+                        on_release: app.set_quota_preset("1024")
+                    
+                    MDFlatButton:
+                        text: "5 GB"
+                        size_hint_x: None
+                        width: dp(80)
+                        on_release: app.set_quota_preset("5120")
+            
+            MDRaisedButton:
+                id: action_btn
+                text: "Enter Code & Grant Access"
+                pos_hint: {'center_x': 0.5}
+                size_hint: None, None
+                size: dp(300), dp(48)
+                on_release: app.submit_pairing()
+            
+            MDLabel:
+                id: error_label
+                text: ""
+                halign: 'center'
+                theme_text_color: 'Error'
+                size_hint_y: None
+                height: dp(30)

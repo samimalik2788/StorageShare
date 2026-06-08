@@ -1,0 +1,89 @@
+<DiscoveryScreen>
+    MDBoxLayout:
+        orientation: 'vertical'
+        
+        MDTopAppBar:
+            title: "Discover Devices"
+            elevation: 4
+            left_action_items: [['arrow-left', lambda x: app.go_home()]]
+        
+        MDBoxLayout:
+            orientation: 'vertical'
+            padding: dp(16)
+            spacing: dp(16)
+            
+            MDLabel:
+                text: "Nearby Devices"
+                font_style: 'H5'
+                size_hint_y: None
+                height: dp(40)
+            
+            MDSpinner:
+                id: spinner
+                active: True
+                size_hint: None, None
+                size: dp(40), dp(40)
+                pos_hint: {'center_x': 0.5}
+            
+            MDLabel:
+                id: status_label
+                text: "Scanning for nearby devices..."
+                halign: 'center'
+                theme_text_color: 'Secondary'
+                size_hint_y: None
+                height: dp(30)
+            
+            ScrollView:
+                MDList:
+                    id: devices_container
+            
+            Widget:
+            
+            MDRaisedButton:
+                text: "Internet Mode"
+                pos_hint: {'center_x': 0.5}
+                size_hint: None, None
+                size: dp(250), dp(48)
+                on_release: app.switch_to_internet_discovery()
+                md_bg_color: app.theme_cls.accent_color
+                text_color: 1, 1, 1, 1
+
+<DiscoveredDeviceCard>
+    MDCard:
+        orientation: 'horizontal'
+        padding: dp(12)
+        spacing: dp(12)
+        size_hint_y: None
+        height: dp(80)
+        ripple_behavior: True
+        on_release: app.request_pairing(root.device_id, root.device_name, root.ip_address)
+        
+        MDIcon:
+            icon: 'cellphone-android'
+            size_hint_x: None
+            width: dp(40)
+            theme_text_color: 'Custom'
+            text_color: app.theme_cls.primary_color
+        
+        MDBoxLayout:
+            orientation: 'vertical'
+            spacing: dp(4)
+            
+            MDLabel:
+                text: root.device_name
+                font_style: 'H6'
+                size_hint_y: None
+                height: dp(24)
+            
+            MDLabel:
+                text: f"IP: {root.ip_address}"
+                theme_text_color: 'Secondary'
+                size_hint_y: None
+                height: dp(20)
+        
+        MDIcon:
+            icon: 'plus-circle'
+            theme_text_color: 'Custom'
+            text_color: app.theme_cls.accent_color
+            size_hint_x: None
+            width: dp(30)

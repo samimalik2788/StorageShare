@@ -1,0 +1,6 @@
+# StorageShare Dependencies
+# kivymd is bundled in the APK automatically by Buildozer
+kivy
+pyjnius
+requests
+Pillow

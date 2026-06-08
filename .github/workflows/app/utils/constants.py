@@ -1,0 +1,79 @@
+"""
+StorageShare - Constants and Configuration
+"""
+
+# App Information
+APP_NAME = "StorageShare"
+APP_VERSION = "1.0.0"
+
+# Network Constants
+DEFAULT_PORT = 9876
+DISCOVERY_PORT = 9877
+BROADCAST_ADDR = "255.255.255.255"
+BUFFER_SIZE = 8192
+CHUNK_SIZE = 65536  # 64KB file transfer chunks
+
+# Security Constants
+PAIRING_CODE_LENGTH = 4
+PAIRING_CODE_TIMEOUT = 120  # seconds
+SESSION_TOKEN_LENGTH = 32
+MAX_PAIRING_ATTEMPTS = 3
+
+# Storage Constants
+DEFAULT_QUOTA_MB = 1024  # 1 GB default quota
+MAX_QUOTA_MB = 102400    # 100 GB max
+MIN_QUOTA_MB = 100       # 100 MB min
+
+# Discovery Constants
+DISCOVERY_INTERVAL = 5   # seconds between discovery broadcasts
+DEVICE_TIMEOUT = 30      # seconds before marking device offline
+
+# Database
+DB_NAME = "storageshare.db"
+
+# UI Constants
+SPLASH_DURATION = 3      # seconds
+
+# Message Types (Protocol)
+MSG_TYPE = {
+    "DISCOVERY_REQUEST": "DISCOVERY_REQ",
+    "DISCOVERY_RESPONSE": "DISCOVERY_RES",
+    "PAIRING_REQUEST": "PAIRING_REQ",
+    "PAIRING_CODE": "PAIRING_CODE",
+    "PAIRING_VERIFIED": "PAIRING_VER",
+    "PAIRING_FAILED": "PAIRING_FAIL",
+    "PAIRING_CANCEL": "PAIRING_CAN",
+    "FILE_LIST_REQUEST": "FILE_LIST_REQ",
+    "FILE_LIST_RESPONSE": "FILE_LIST_RES",
+    "FILE_UPLOAD_REQUEST": "FILE_UPLOAD_REQ",
+    "FILE_UPLOAD_ACCEPT": "FILE_UPLOAD_ACC",
+    "FILE_UPLOAD_REJECT": "FILE_UPLOAD_REJ",
+    "FILE_CHUNK": "FILE_CHUNK",
+    "FILE_CHUNK_ACK": "FILE_CHUNK_ACK",
+    "FILE_DOWNLOAD_REQUEST": "FILE_DOWN_REQ",
+    "FILE_DOWNLOAD_ACCEPT": "FILE_DOWN_ACC",
+    "FILE_DOWNLOAD_REJECT": "FILE_DOWN_REJ",
+    "CREATE_FOLDER_REQUEST": "CREATE_DIR_REQ",
+    "CREATE_FOLDER_RESPONSE": "CREATE_DIR_RES",
+    "TRANSFER_COMPLETE": "XFER_COMPLETE",
+    "TRANSFER_ERROR": "XFER_ERROR",
+    "QUOTA_CHECK": "QUOTA_CHECK",
+    "QUOTA_RESPONSE": "QUOTA_RES",
+    "DISCONNECT": "DISCONNECT",
+    "PING": "PING",
+    "PONG": "PONG",
+}
+
+# Error Codes
+ERROR = {
+    "NONE": 0,
+    "PAIRING_FAILED": 1,
+    "PAIRING_EXPIRED": 2,
+    "QUOTA_EXCEEDED": 3,
+    "FILE_NOT_FOUND": 4,
+    "PERMISSION_DENIED": 5,
+    "CONNECTION_LOST": 6,
+    "INVALID_REQUEST": 7,
+    "STORAGE_FULL": 8,
+    "UNKNOWN": 99,
+}
